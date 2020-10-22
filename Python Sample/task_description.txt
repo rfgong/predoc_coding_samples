@@ -1,0 +1,62 @@
+Replication and extensions for "Trading on Talent: Human Capital and Firm Performance":
+4 Employee Skillsets and Firm Performance
+5 Employee Skillsets and Firm Operations
+
+From all data to equation regressions:
+
+1. merge_market.py
+    Input:
+        - compustat_full_month.csv
+        - crsp_full_month.csv
+    Output:
+        - market_measures.csv
+
+2. factor_alphas.py
+    Input:
+        - crsp_full_month.csv
+        - factors3.csv
+        - factors5.csv
+        - factors_mom.csv
+    Output:
+        - ff1alphas.csv
+        - ff3alphas.csv
+        - ff4alphas.csv
+        - ff5alphas.csv
+
+3. collect_skills.py
+    Input:
+        - cognism_current.txt
+        - cognism_join.txt
+        - cognism_leave.txt
+    Output:
+        - skills_current.csv
+        - skills_join.csv
+        - skills_leave.csv
+        - skills_change_current.csv
+        - skills_change_join.csv
+        - skills_change_leave.csv
+
+4. find_premia.py
+    Input:
+        - ff1alphas.csv / ff3alphas.csv / ff4alphas.csv/ ff5alphas.csv
+        - market_measures.csv
+        - skills_current.csv / skills_join.csv / skills_leave.csv
+    Output:
+        - tobit_ols.csv
+        - premia.csv
+        - premia_single_eq.csv
+        - CSV files for Fama-Macbeth
+
+5. find_wage_profit_sue.py
+    Input:
+        - market_measures.csv
+        - compustat_year.csv
+        - compustat_month_extensions.csv
+        - skills_current.csv / skills_join.csv / skills_leave.csv
+        - skills_change_current.csv / skills_change_join.csv / skills_change_leave.csv
+
+    Output:
+        - wage_ols.csv
+        - profit_ols.csv
+        - sue_ols.csv
+        - CSV files for Fama-Macbeth
